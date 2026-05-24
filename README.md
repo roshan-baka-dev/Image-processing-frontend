@@ -2,6 +2,10 @@
 
 A React + Vite frontend for the Image Processing Service. It provides authentication, image upload, image browsing, and image detail views, and communicates with the backend API through Axios.
 
+## Backend repository
+
+https://github.com/roshan-baka-dev/Image-processing-pipeline
+
 ---
 
 ## Features
