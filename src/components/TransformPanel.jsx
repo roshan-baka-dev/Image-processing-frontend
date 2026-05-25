@@ -6,6 +6,7 @@ export default function TransformPanel({ imageId, onTransformed }) {
   const [height, setHeight] = useState('')
   const [fit, setFit] = useState('cover')
   const [rotate, setRotate] = useState('')
+  const [blackAndWhite, setBlackAndWhite] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
@@ -24,6 +25,9 @@ export default function TransformPanel({ imageId, onTransformed }) {
     }
     if (rotate) {
       transformations.rotate = parseInt(rotate)
+    }
+    if (blackAndWhite) {
+      transformations.blackAndWhite = true
     }
 
     if (Object.keys(transformations).length === 0) {
@@ -97,6 +101,16 @@ export default function TransformPanel({ imageId, onTransformed }) {
           />
         </div>
       </div>
+
+      <label className="flex items-center gap-3 mb-6 text-sm text-slate-300">
+        <input
+          type="checkbox"
+          checked={blackAndWhite}
+          onChange={(e) => setBlackAndWhite(e.target.checked)}
+          className="h-4 w-4 rounded border-slate-600 bg-slate-700 text-indigo-600 focus:ring-indigo-500"
+        />
+        Black & white
+      </label>
 
       {error && <p className="text-red-400 text-sm mb-4">{error}</p>}
 
