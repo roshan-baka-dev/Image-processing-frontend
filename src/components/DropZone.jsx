@@ -19,7 +19,12 @@ export default function DropZone({ onUploadComplete }) {
       })
       onUploadComplete()
     } catch (err) {
-      setError(err.response?.data?.message || 'Upload failed')
+      const resp = err?.response?.data
+      if (resp?.isBlocked) {
+        setError(resp.message || 'Upload blocked: explicit content detected')
+      } else {
+        setError(resp?.message || 'Upload failed')
+      }
     } finally {
       setUploading(false)
       setProgress(0)
