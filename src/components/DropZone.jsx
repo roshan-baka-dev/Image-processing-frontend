@@ -23,6 +23,7 @@ export default function DropZone({ onUploadComplete }) {
     } finally {
       setUploading(false)
       setProgress(0)
+      if (fileInputRef.current) fileInputRef.current.value = ''
     }
   }
 
