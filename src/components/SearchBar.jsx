@@ -15,7 +15,9 @@ export default function SearchBar({ onResults }) {
             const { data } = await api.post('/images/search', { query });
             onResults(data.results);
         } catch (err) {
-            setError(err.response?.data?.message || 'Search failed. Please try again.');
+            const data = err.response?.data;
+            const errorMsg = data?.error ? `${data.message}: ${data.error}` : (data?.message || 'Search failed. Please try again.');
+            setError(errorMsg);
         } finally {
             setLoading(false);
         }
