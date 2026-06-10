@@ -24,18 +24,23 @@ export default function SearchBar({ onResults }) {
     };
 
     return (
-        <div>
-            <form onSubmit={handleSearch}>
+        <div className="flex flex-col items-end">
+            <form onSubmit={handleSearch} className="flex items-center border border-slate-600 rounded-lg overflow-hidden bg-slate-800 focus-within:border-indigo-500 focus-within:ring-1 focus-within:ring-indigo-500 transition-all shadow-sm">
                 <input
+                    className="bg-transparent text-white px-4 py-2 outline-none w-64 md:w-80 placeholder-slate-400 text-sm"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
-                    placeholder='Search your images... e.g. "sunset at beach"'
+                    placeholder='Search your images... e.g. "car"'
                 />
-                <button type="submit" disabled={loading}>
+                <button 
+                    type="submit" 
+                    disabled={loading}
+                    className="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 transition-colors disabled:opacity-50 text-sm font-medium border-l border-slate-600"
+                >
                     {loading ? 'Searching...' : '🔍 Search'}
                 </button>
             </form>
-            {error && <p style={{ color: 'red', marginTop: '0.5rem' }}>{error}</p>}
+            {error && <p className="text-red-400 text-sm mt-2 text-right">{error}</p>}
         </div>
     );
 }

@@ -22,19 +22,21 @@ export default function DashboardPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-white mb-6">Your Images</h1>
-        <DropZone onUploadComplete={refetch} />
-        <div className="mt-4">
-          <SearchBar onResults={handleSearchResults} />
-          {searchResults !== null && (
-            <button
-              onClick={clearSearch}
-              className="mt-2 text-sm text-slate-400 hover:text-white underline"
-            >
-              ✕ Clear search — show all images
-            </button>
-          )}
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+          <h1 className="text-2xl font-bold text-white">Your Images</h1>
+          <div className="w-full sm:w-auto text-right">
+            <SearchBar onResults={handleSearchResults} />
+            {searchResults !== null && (
+              <button
+                onClick={clearSearch}
+                className="mt-2 text-sm text-slate-400 hover:text-white underline block w-full text-right"
+              >
+                ✕ Clear search — show all images
+              </button>
+            )}
+          </div>
         </div>
+        <DropZone onUploadComplete={refetch} />
       </div>
 
       {error && (
